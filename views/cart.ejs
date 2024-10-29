@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cart</title>
+    <link rel="stylesheet" href="/css/nav.css" />
+    <link rel="stylesheet" href="/css/cart_style.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <main>
+      <div
+        style="
+          width: 500px;
+          margin-left: 30%;
+          box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+            rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+            rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+        "
+      >
+        <%- include('partials/nav')%> <%- include('cartbody.ejs') %>
+        <h2 style="margin-top: 70px; text-align: center; padding: 30px">
+          My Cart
+        </h2>
+        <!-- <section id="cart_section" > -->
+        <div>
+          <% if (cart.length === 0) { %>
+          <p style="font-size: 30px">Your cart is empty.</p>
+          <% } else { %>
+          <ul id="cartul">
+            <% cart.forEach(item => { %>
+            <img
+              style="height: 300px; width: 200px"
+              src="/images/userUpload/<%= item.imageName %>"
+              alt="<%= item.name %>"
+            />
+            <li style="font-size: large; margin-bottom: 10px" id="cartli">
+              <p><%= item.name %></p>
+              <p>Price: <%= item.price %></p>
+              <p>Quantity: <%= item.quantity %></p>
+              <p>TotalPrice: <%= item.totalPrice %></p>
+
+              <form action="/removeFromCart" method="post">
+                <div>
+                  <input type="hidden" name="id" value="<%= item.id %>" />
+                  <button type="submit">Remove</button>
+                  <button id="myButton" onclick="handleClick()" type="submit">
+                    Buy Now
+                  </button>
+                </div>
+                <div style="margin-bottom: 20px; margin-top: 20px">
+                  <label
+                    for="payment"
+                    style="
+                      display: block;
+                      font-size: 25px;
+                      font-weight: 500;
+                      color: black;
+                      margin-bottom: 8px;
+                    "
+                    >Payment via</label
+                  >
+                  <select
+                    id="pay"
+                    name="pay"
+                    style="width: 200px; padding: 10px 25px"
+                  >
+                    <option value=" ">Select</option>
+                    <option value=" Bkash">Bkash</option>
+                    <option value="Rocket">Rocket</option>
+                    <option value="nagad">Nagad</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+              </form>
+            </li>
+            <% }); %>
+          </ul>
+          <% } %>
+        </div>
+      </div>
+    </main>
+    <div class="footer">
+      <footer>&copy; 2024 by ElectroBD System Limited</footer>
+    </div>
+    <script>
+      // Get the button element
+      var button = document.getElementById("myButton");
+
+      function handleClick() {
+        alert("Thanks For Purchase!");
+      }
+
+      button.addEventListener("click", handleClick);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,80 @@
+
+/* Styling for the cart section */
+
+
+/* Styling for the list inside cart */
+#cartul {
+  list-style: none;
+  padding: 0;
+  margin-left: 30%;
+}
+
+/* Styling for each item in the cart */
+#cartli {
+  margin-bottom: px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  
+}
+
+/* Styling for the image inside each cart item */
+#cartli img {
+  height: auto;
+  max-width: 100%;
+  display: block;
+  margin-bottom: 15px;
+}
+
+/* Styling for the buttons in each cart item */
+#cartli button {
+  
+  padding: 8px 20px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+#cartli button:hover {
+  background-color: #0056b3;
+}
+
+/* Styling for the payment selection dropdown */
+#pay {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  margin-top: 10px;
+}
+
+/* Styling for the payment label */
+#cartli label {
+  display: block;
+  font-size: 18px;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+
+
+
+
+.footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 20px 0;
+}
+
+.footer footer {
+  font-size: 14px;
+}

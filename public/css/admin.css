@@ -1,0 +1,139 @@
+/* Reset default margin and padding */
+
+
+
+h1, h2, form, fieldset, legend, label, input, button, table, tbody, thead, tr, th, td {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+fieldset{
+  margin: 15px;
+  
+}
+h2{
+  margin-left: 20px;
+}
+
+/* Main section styling */
+#main_section_admin {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px;
+  margin-top: 80px;
+}
+
+/* Sub section styling */
+#sub_section_admin {
+  width: 50%;
+}
+
+/* Form styling */
+form {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  color: #333;
+  margin-left: 50px;
+
+}
+
+input[type="text"],
+input[type="number"],
+input[type="file"] {
+  width: 80%;
+  margin-bottom: 15px;
+  margin-left: 50px;
+  padding: 12px;
+  /* border: 1px solid #ccc; */
+  border-radius: 6px;
+  transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="file"]:focus {
+  border-color: #007bff;
+}
+
+button[type="submit"] {
+  width: 80%;
+  padding: 12px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-left: 50px;
+
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+/* Table styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 15px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+  color: #333;
+}
+
+/* Chat section styling */
+#aside_form {
+  width: 28%;
+}
+
+.chat-messages {
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+#messages {
+  margin-bottom: 15px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+#message {
+  width: calc(100% - 100px);
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  transition: border-color 0.3s ease;
+}
+
+#message:focus {
+  border-color: #007bff;
+}
+
+#sendBtn {
+  width: 80px;
+  padding: 12px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#sendBtn:hover {
+  background-color: #0056b3;
+}

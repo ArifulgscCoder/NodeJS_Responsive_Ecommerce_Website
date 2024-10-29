@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ElectroBD</title>
+    <link rel="stylesheet" href="/css/nav.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+
+  <body>
+    <div class="header">
+      <%- include('partials/nav')%>
+      <div class="body">
+        <span>Welcome To</span>
+        <h1>ElectroBD</h1>
+        <div class="btn-group">
+          <p style="font-size: 28px; font-weight: bolder">
+            Empowering connections, powering innovation
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div id="menu-section">
+      <h2><span>Top </span>Product</h2>
+      <div class="row card-dishes">
+        <% products.forEach(product => { %>
+        <div>
+          <a href="/product/<%= product.id %>">
+            <img
+              src="/images/userUpload/<%= product.imageName %>"
+              alt="<%= product.name %>"
+            />
+            <div>
+              <h3><%= product.name %></h3>
+              <p>Price: <%= product.price %></p>
+              <p>Stock: <%= product.stock %></p>
+              <form action="/cart" method="POST">
+                <input type="hidden" name="id" value="<%= product.id %>" />
+                <input type="hidden" name="name" value="<%= product.name %>" />
+                <input
+                  type="hidden"
+                  name="price"
+                  value="<%= product.price %>"
+                />
+                <input
+                  type="hidden"
+                  name="imageName"
+                  value="<%= product.imageName %>"
+                />
+                <button type="submit">Add to Cart</button>
+              </form>
+            </div>
+          </a>
+        </div>
+        <% }) %>
+      </div>
+    </div>
+
+    <!--  HTML content -->
+
+    <div class="divider" id="aq"></div>
+
+    <div class="divider"></div>
+
+    <div id="our_product">
+      <h2><span>New </span> Products</h2>
+      <div class="mobile-slider-container">
+        <button class="prev-arrow"><i>&lt;</i></button>
+        <div class="mobile-slider">
+          <div class="mobile-slide">
+            <div class="mobile-image">
+              <img src="/images/canon_camera.jpg" alt="canon_camera" />
+              <h3>Cannon Camera</h3>
+            </div>
+            <p>Cannon</p>
+          </div>
+          <div class="mobile-slide">
+            <div class="mobile-image">
+              <img src="/images/Drone With Camera.jpg" alt="Drone" />
+              <h3>Drone camera</h3>
+            </div>
+            <p>Drone</p>
+          </div>
+          <div class="mobile-slide">
+            <div class="mobile-image">
+              <img src="/images/game device.jpg" alt="Game" />
+              <h3>Game Controler</h3>
+            </div>
+            <p>Controler</p>
+          </div>
+          <div class="mobile-slide">
+            <div class="mobile-image">
+              <img src="/images/headphone 2.jpg" alt="headphone" />
+              <h3>Headphone</h3>
+            </div>
+            <p>Remax</p>
+          </div>
+          <div class="mobile-slide">
+            <div class="mobile-image">
+              <img src="/images/dslr camera.jpg" alt="dslr" />
+              <h3>Dslr Camera</h3>
+            </div>
+            <p>Canon</p>
+          </div>
+          <div class="mobile-slide">
+            <div class="mobile-image">
+              <img src="/images/logitech keyboard.jpg" alt="keyboard" />
+              <h3>Logitech</h3>
+            </div>
+            <p>Logitech</p>
+          </div>
+          <div class="mobile-slide">
+            <div class="mobile-image">
+              <img src="/images/iphone pen.jpg" alt="iphonepen" />
+              <h3>Iphone</h3>
+            </div>
+            <p>Iphone</p>
+          </div>
+          <div class="mobile-slide">
+            <div class="mobile-image">
+              <img src="/images/car_helmet.jpg" alt="helmet" />
+              <h3>Helmet</h3>
+            </div>
+            <p>Helmet</p>
+          </div>
+        </div>
+        <button class="next-arrow"><i>&gt</i></button>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <%- include('partials/footer')%>
+
+    <div class="message-button" id="message-button">
+      <button class="msgButton" onclick="toggleChatBox()">Chat</button>
+    </div>
+
+    <div class="chat-box-container" id="chat-box-container">
+      <div class="chat-box" id="chat-box">
+        <div class="chat-messages" id="chat-messages">
+          <!--  -->
+          <div id="chatdiv">
+            <div>
+              <p id="adminname">ElectroBD Admin</p>
+            </div>
+            <dir>
+              <button onclick="closeChatBox()" class="close-button">
+                &times;
+              </button>
+            </dir>
+          </div>
+
+          <div id="messages"></div>
+
+          <!--  -->
+        </div>
+        <input type="text" id="message" placeholder="Enter Message" />
+        <button id="sendBtn">Send</button>
+      </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      const socket = io();
+      const sendBtn = document.getElementById("sendBtn");
+      const messageInput = document.getElementById("message");
+      const allMessages = document.getElementById("messages");
+
+      socket.on("chat message", (message) => {
+        // changed from 'message' to 'chat message'
+        const p = document.createElement("p");
+        p.innerText = message;
+        allMessages.appendChild(p);
+      });
+
+      sendBtn.addEventListener("click", (e) => {
+        const message = messageInput.value;
+        console.log(message);
+        socket.emit("chat message", message); // changed from 'user-message' to 'chat message'
+      });
+    </script>
+
+    <script src="js/scripts.js"></script>
+  </body>
+</html>

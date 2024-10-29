@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1714343839174,
+    "name": "Asus Laptop",
+    "price": "50000",
+    "stock": 10,
+    "imageName": "1714343839165.jpg"
+  },
+  {
+    "id": 1714343964044,
+    "name": "Digital Art Light",
+    "price": "1000",
+    "stock": 10,
+    "imageName": "1714343963927.jpg"
+  },
+  {
+    "id": 1714344244756,
+    "name": "Baby Trolly",
+    "price": "3000",
+    "stock": "25",
+    "imageName": "1714344244745.jpg"
+  },
+  {
+    "id": 1714344376151,
+    "name": "Fitness Tracker",
+    "price": "3500",
+    "stock": "10",
+    "imageName": "1714344376141.jpg"
+  },
+  {
+    "id": 1714344470444,
+    "name": "Lamp",
+    "price": "1000",
+    "stock": 15,
+    "imageName": "1714344470361.jpg"
+  }
+]

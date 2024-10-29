@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= product.name %> - ElectroBD</title>
+    <link rel="stylesheet" href="/css/nav.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body style="margin-top: 80px; margin-left: 500px">
+    <div class="header">
+      <nav class="sticky-nav">
+        <div id="nav-menu">
+          <ul>
+            <li>
+              <a id="logoo" href="/"></a>
+            </li>
+            <li><a href="/">Home</a></li>
+
+            <li><a href="/#menu-section">Top Products</a></li>
+            <li><a href="/#our_product">New Products</a></li>
+
+            <li><a href="/admin">Admin</a></li>
+            <li><a href="/cart">Cart</a></li>
+          </ul>
+          <form>
+            <input
+              type="search"
+              id="search"
+              placeholder="Search your desire Product"
+              aria-label="Search"
+              oninput="filterFood()"
+            />
+            <button id="searchbtn" type="submit">
+              <a href="#menu-section">Search</a>
+            </button>
+          </form>
+        </div>
+        <!-- <button id="cart-btn"><i class="fa fa-shopping-cart"></i> Cart</button> -->
+      </nav>
+    </div>
+
+    <div class="container">
+      <h1><%= product.name %></h1>
+      <img
+        style="height: 200px"
+        src="/images/userUpload/<%= product.imageName %>"
+        alt="<%= product.name %>"
+      />
+      <p style="font-size: 20px; font-weight: bolder">
+        Price: <%= product.price %>
+      </p>
+      <p style="font-size: 20px; font-weight: bolder">
+        Stock: <%= product.stock %>
+      </p>
+
+      <form action="/cart" method="POST">
+        <input type="hidden" name="id" value="<%= product.id %>" />
+        <input type="hidden" name="name" value="<%= product.name %>" />
+        <input type="hidden" name="price" value="<%= product.price %>" />
+        <button type="submit" style="width: 23%; padding: 7px">
+          Add to Cart
+        </button>
+      </form>
+    </div>
+  </body>
+</html>
